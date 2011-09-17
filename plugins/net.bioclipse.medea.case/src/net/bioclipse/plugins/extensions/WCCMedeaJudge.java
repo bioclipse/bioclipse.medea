@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 import net.bioclipse.core.util.LogUtils;
 import net.bioclipse.medea.core.Medea;
+import net.bioclipse.seneca.judge.AbstractJudge;
 import net.bioclipse.seneca.judge.IJudge;
-import net.bioclipse.seneca.judge.Judge;
 import net.bioclipse.seneca.judge.JudgeResult;
 import net.bioclipse.seneca.judge.MissingInformationException;
 import net.bioclipse.seneca.judge.WCCNMRShiftDBJudge;
@@ -48,7 +48,7 @@ import org.xmlcml.cml.element.CMLSpectrum;
 
 import spok.utils.SpectrumUtils;
 
-public class WCCMedeaJudge extends Judge implements IJudge, Serializable, Cloneable {
+public class WCCMedeaJudge extends AbstractJudge implements IJudge, Serializable, Cloneable {
 
   private static Logger logger = Logger.getLogger(WCCNMRShiftDBJudge.class);
 
@@ -107,7 +107,7 @@ public class WCCMedeaJudge extends Judge implements IJudge, Serializable, Clonea
 	}
 
 	public JudgeResult evaluate(IAtomContainer ac) throws Exception {
-		IMolecule mol = ac.getBuilder().newMolecule(ac);
+		IMolecule mol = ac.getBuilder().newInstance(IMolecule.class,ac);
 		System.out.print(count+" smi: " + new SmilesGenerator().createSMILES(mol));
 		count++;
 		// FIXME: need to do atom type perception first.
@@ -250,4 +250,16 @@ public class WCCMedeaJudge extends Judge implements IJudge, Serializable, Clonea
             }
         }
     }
+
+	@Override
+	public boolean isLabelling() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void labelStartStructure(IAtomContainer startStructure) {
+		// TODO Auto-generated method stub
+		
+	}
 }

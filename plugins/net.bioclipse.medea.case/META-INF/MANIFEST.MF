@@ -8,13 +8,11 @@ Bundle-Vendor: Miguel Rojas
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
- net.bioclipse.logger,
  net.bioclipse.ui,
  net.bioclipse.cml,
  net.bioclipse.spectrum,
  net.bioclipse.cdk.jchempaint,
  net.bioclipse.specmol,
- org.xmlcml.cmlxom,
  org.openscience.cdk.core,
  org.openscience.cdk.interfaces,
  org.openscience.cdk.standard,
@@ -24,6 +22,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.views,
  net.bioclipse.seneca,
  net.bioclipse.medea,
- net.bioclipse.core;bundle-version="2.0.0"
+ net.bioclipse.core
 Eclipse-LazyStart: true
-Import-Package: nu.xom
+Import-Package: nu.xom,
+ org.xmlcml.cml.base,
+ org.xmlcml.cml.element,
+ org.apache.log4j
