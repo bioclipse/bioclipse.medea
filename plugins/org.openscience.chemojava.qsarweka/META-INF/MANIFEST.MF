@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CDK plugin
+Bundle-SymbolicName: org.openscience.chemojava.qsarweka;singleton:=true
+Bundle-Version: 1.4.2.1
+Bundle-Vendor: The Chemistry Development Kit Project
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.openscience.chemojava.qsarweka.Activator
+Bundle-ClassPath: .
+Require-Bundle: org.openscience.cdk.annotation,
+ org.openscience.cdk.interfaces,
+ org.openscience.cdk.core,
+ org.openscience.cdk.standard,
+ org.openscience.cdk.qsar,
+ net.sourceforge.weka,
+ org.eclipse.core.runtime,
+ org.openscience.chemojava.qsar
+Export-Package: org.openscience.chemojava.libio.weka,
+ org.openscience.chemojava.qsar.model.weka,
+ org.openscience.chemojava.qsarweka

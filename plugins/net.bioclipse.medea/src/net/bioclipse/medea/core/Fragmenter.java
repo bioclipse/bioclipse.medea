@@ -7,7 +7,6 @@ import java.util.List;
 import net.bioclipse.medea.core.learning.ExtractorProbability;
 
 import org.openscience.cdk.CDKConstants;
-import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.interfaces.IAtom;
 import org.openscience.cdk.interfaces.IMapping;
@@ -121,7 +120,8 @@ public class Fragmenter {
 					molecule_ = (IMolecule) molecule.clone();
 					molecule_.getAtom(i).setFlag(CDKConstants.REACTIVE_CENTER,true);
 					
-					IMoleculeSet setOfReactants = DefaultChemObjectBuilder.getInstance().newMoleculeSet();
+					IMoleculeSet setOfReactants = molecule.getBuilder()
+						.newInstance(IMoleculeSet.class);
 					setOfReactants.addMolecule(molecule_);
 					IReactionProcess type  = new ElectronImpactNBEReaction();
 			        List<IParameterReact> paramList = new ArrayList<IParameterReact>();
@@ -205,7 +205,8 @@ public class Fragmenter {
 					
 					try {
 						
-						IMoleculeSet setOfReactants = molecule.getBuilder().newMoleculeSet();
+						IMoleculeSet setOfReactants = molecule.getBuilder()
+							.newInstance(IMoleculeSet.class);
 						cleanFlagReactiveCenter((IMolecule)fragmentToStudy);
 						setOfReactants.addMolecule((IMolecule)fragmentToStudy);
 				        setOfReactions = type.initiate(setOfReactants, null);

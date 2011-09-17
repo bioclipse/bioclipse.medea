@@ -1,14 +1,12 @@
 package net.bioclipse.medea.core.reaction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import net.bioclipse.medea.core.FragmentMolecule;
 import net.bioclipse.medea.core.FragmentTree;
 import net.bioclipse.medea.core.Position;
 
 import org.openscience.cdk.DefaultChemObjectBuilder;
-import org.openscience.cdk.interfaces.IMapping;
 import org.openscience.cdk.interfaces.IMolecularFormula;
 import org.openscience.cdk.interfaces.IMolecule;
 import org.openscience.cdk.interfaces.IReactionSet;
@@ -33,7 +31,8 @@ public class ExtractorSetReactions {
 	 * @return A set of reactions
 	 */
 	public IReactionSet extract() {
-		IReactionSet setOfReactions = DefaultChemObjectBuilder.getInstance().newReactionSet();
+		IReactionSet setOfReactions = DefaultChemObjectBuilder.getInstance()
+			.newInstance(IReactionSet.class);
 		
 		IMolecule molecule = fragmentTree.getMolecule();
 		IMolecularFormula formula = MolecularFormulaManipulator.getMolecularFormula(molecule);
